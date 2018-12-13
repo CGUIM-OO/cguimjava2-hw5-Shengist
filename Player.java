@@ -22,21 +22,42 @@ public class Player extends Person{
 		chips1 =chips1-bet;
 		return bet;
 	}
+	public void setOneRoundCard(ArrayList<Card> cards) {
+		oneRoundCard=cards;
+	}
+	public int getTotalValue() {
+		addAll = 0;
+		for(Card a : oneRoundCard) 
+		{
+			if(a.getRank()<10) 
+			{
+				addAll += a.getRank();
+			}
+			else {
+				addAll += 10;
+			}
+		}
+		return addAll;
+	}
 	public int getCurrentChips() {
 		return chips1;
 	}
 	public void increaseChips (int diff) {
 		chips1 = diff + chips1;
 	}
-	@Override
-	public boolean hit_me(Table table) {
-		// TODO Auto-generated method stub
+	public boolean hit_me(int addAll) {
+		
 		if(addAll<=16){
 			return true;
 		}
 		else {
 			return false;
 		}
+	}
+	@Override
+	public boolean hit_me(Table table) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }

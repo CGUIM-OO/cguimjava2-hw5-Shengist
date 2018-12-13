@@ -8,11 +8,11 @@ public class Table {
 	public Table(int nDeck) {
 		Deck Deck1 = new Deck(1);
 		Deck = Deck1;
-		int[] player_array = new int[nDeck];
+		int[] player_array ;
 		
 	}
 	public void set_player(int pos, Player p) {
-	Player[pos-1] = p;
+		Player[pos-1] = p;
 	 
   }
 	public Player[] get_player() {
@@ -35,27 +35,53 @@ public class Table {
 	}
 	private void distribute_cards_to_dealer_and_players() {
 		int timer = 1;
-		int Cardnum ; 
+		int Cardnum = 0 ; 
 		boolean give = true;
 		for(int i=0; i<Player.length; i++) {
 			System.out.println("Palyer" + (i+1) + "'s Cards now :");
-			while(timer<2) {
+			while(give = true) {
 				Deck.getOneCard(true);
 				Deck.getOpenedCard(timer);
 				timer++;
+				Cardnum++;
+				if(Cardnum >2) {
+					Cardnum =0;
+					give = false;
+				}
+					
 			}
 			
 		}
 		
 	}
 	private void ask_each_player_about_hits() {
-		Player hitme
+		for(int i=0; i<Player.length; i++) {
+			boolean res =Player[i].hit_me(Player[i].getTotalValue());
+			while(res == true) {
+				System.out.println("Hit!");
+				Deck.getOneCard(false);
+				res =Player[i].hit_me(Player[i].getTotalValue());
+				
+			}
+			if(res = false){
+				System.out.println(Player[i].getName() + "Pass hit!");
+			}	
+		}
+		
 	}
 	private void ask_dealer_about_hits() {
-		;
+		boolean res =Dealer.hit_me();
+		while(res == true) {
+			System.out.println("Hit!");
+			Deck.getOneCard(false);
+			res =Dealer.hit_me();
+		}
+		if(res = false){
+			System.out.println("Dealer"+ "Pass hit!");
+		}	
 	}
 	private void calculate_chips() {
-		;
+		System.out.println("Dealer's card value is "++" ,Cards:";
 	}
 	public int[] get_players_bet() {
 		ask_each_player_about_bets();
