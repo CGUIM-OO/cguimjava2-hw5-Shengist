@@ -81,7 +81,10 @@ public class Table {
 		}	
 	}
 	private void calculate_chips() {
-		System.out.println("Dealer's card value is "++" ,Cards:";
+		System.out.println("Dealer's card value is "++" ,Cards:");
+		for(int i=0; i<Player.length; i++) {
+		System.out.println("Player"+ i +"'s card value is " + Player[i].getTotalValue()+" ,Cards:" );
+		}
 	}
 	public int[] get_players_bet() {
 		ask_each_player_about_bets();
