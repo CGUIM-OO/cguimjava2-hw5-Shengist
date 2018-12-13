@@ -94,7 +94,10 @@ class Deck{
 		return usedCard;
 	}
 	
-	public ArrayList<Card> getOpenedCard(){
-		return openCard[];
+	public Card getOpenedCard(int i){
+		return openCard.get(i);
+	}
+	public int getnUsed() {
+		return nUsed;
 	}
 }
